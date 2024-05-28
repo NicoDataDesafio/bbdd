@@ -26,12 +26,7 @@ CREATE TABLE "representante_1"(
 );
 ALTER TABLE
     "representante_1" ADD PRIMARY KEY("id_rep_1");
-CREATE TABLE "pais_origen"(
-    "id_pais_origen" SERIAL NOT NULL,
-    "pais" VARCHAR(255) NOT NULL
-);
-ALTER TABLE
-    "pais_origen" ADD PRIMARY KEY("id_pais_origen");
+
 CREATE TABLE "representante_2"(
     "id_rep_2" SERIAL NOT NULL,
     "id_alumno" BIGINT NOT NULL,
@@ -97,27 +92,11 @@ CREATE TABLE "newsletter"(
 );
 ALTER TABLE
     "newsletter" ADD PRIMARY KEY("id_newsletter");
-CREATE TABLE "pais_destino"(
-    "id_pais_destino" SERIAL NOT NULL,
-    "pais" VARCHAR(255) NOT NULL
-);
-ALTER TABLE
-    "pais_destino" ADD PRIMARY KEY("id_pais_destino");
-CREATE TABLE "servicio"(
-    "id_servicio" SERIAL NOT NULL,
-    "servicio" VARCHAR(255) NOT NULL
-);
-ALTER TABLE
-    "servicio" ADD PRIMARY KEY("id_servicio");
-ALTER TABLE
-    "alumnos" ADD CONSTRAINT "alumnos_id_pais_origen_foreign" FOREIGN KEY("id_pais_origen") REFERENCES "pais_origen"("id_pais_origen");
+
+
 ALTER TABLE
     "datos_facturacion" ADD CONSTRAINT "datos_facturacion_id_alumno_foreign" FOREIGN KEY("id_alumno") REFERENCES "alumnos"("id_alumno");
 ALTER TABLE
     "representante_2" ADD CONSTRAINT "representante_2_id_alumno_foreign" FOREIGN KEY("id_alumno") REFERENCES "alumnos"("id_alumno");
 ALTER TABLE
-    "alumnos" ADD CONSTRAINT "alumnos_id_servicio_foreign" FOREIGN KEY("id_servicio") REFERENCES "servicio"("id_servicio");
-ALTER TABLE
     "representante_1" ADD CONSTRAINT "representante_1_id_alumno_foreign" FOREIGN KEY("id_alumno") REFERENCES "alumnos"("id_alumno");
-ALTER TABLE
-    "alumnos" ADD CONSTRAINT "alumnos_id_pais_destino_foreign" FOREIGN KEY("id_pais_destino") REFERENCES "pais_destino"("id_pais_destino");
